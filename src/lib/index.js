@@ -174,6 +174,7 @@ const DownloadBinary = ({
     arch = null,
     flavor = null,
     mirror = null,
+    output = null,
     showProgressbar = false,
     progressCallback = null
 }, callback) => {
@@ -211,7 +212,8 @@ const DownloadBinary = ({
         var [err, fromCache, path] = yield Download(url, {
             cachePrefix: 'binary',
             showProgressbar: true,
-            progressCallback: progressCallback
+            progressCallback: progressCallback,
+            outputDirectory: output
         }, cb.expect(3));
 
         callback(err, fromCache, path);

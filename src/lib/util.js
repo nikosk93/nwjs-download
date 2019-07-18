@@ -1,7 +1,7 @@
 
 'use strict';
 
-const { dirname, basename, join, resolve } = require('path');
+const { dirname, basename, join, resolve, isAbsolute } = require('path');
 const { exists, stat, writeFile, readFile, unlink, readdir } = require('fs');
 const { mkdirsSync } = require('fs-extra');
 
@@ -101,12 +101,19 @@ const ClearManifestCache = (callback) => {
 const Download = (url, {
     cachePrefix = null,
     showProgressbar = true,
-    progressCallback = null
+    progressCallback = null,
+    outputDirectory = null
 }, callback) => {
 
     Flow(function*(cb) {
+        let path = cachePrefix ? join(DIR_CACHES, cachePrefix + '-' + basename(url)) : temp.path();
 
-        const path = cachePrefix ? join(DIR_CACHES, cachePrefix + '-' + basename(url)) : temp.path();
+        if (outputDirectory) {
+            outputDirectory = isAbsolute(outputDirectory) ? outputDirectory: resolve(process.cwd(), outputDirectory)
+            mkdirsSync(outputDirectory)
+            path = resolve(outputDirectory, basename(path))
+            console.log('ppp', path)
+        }
 
         if(yield exists(path, cb.single)) {
             return callback(null, true, path);

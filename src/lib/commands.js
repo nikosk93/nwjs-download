@@ -84,6 +84,7 @@ const download = (command) => {
         arch: command.arch,
         flavor: command.flavor,
         mirror: command.mirror,
+        output: command.output,
         showProgressbar: true
     }, (err, fromCache, path) => {
 
