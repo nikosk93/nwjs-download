@@ -14,7 +14,7 @@
     "prettier": "prettier --write src/**/*.{js,ts,vue}"
   },
   "bin": {
-    "nwd": "./bin/nwd.js"
+    "nwd": "./dist/bin/nwd.js"
   },
   "repository": {
     "type": "git",
