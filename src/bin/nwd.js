@@ -4,9 +4,9 @@
 
 const commander = require('commander');
 
-const NWD = require('../');
+const NWD = require('../lib');
 
-commander.version(require('../package.json').version);
+commander.version(require('../../package.json').version);
 
 commander.command('*').action(() => commander.help());
 

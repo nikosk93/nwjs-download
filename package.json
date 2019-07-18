@@ -7,10 +7,10 @@
     "prepublish": "npm run build",
     "pretest": "npm run build",
     "test": "mocha",
-    "build": "babel -d . ./src/",
+    "build": "babel -d ./dist/ ./src/",
     "clean": "rm -r ./bin/ ./lib/ ./test/",
     "prestart": "npm run build",
-    "start": "node ./bin/nwd.js",
+    "start": "node ./dist/bin/nwd.js",
     "prettier": "prettier --write src/**/*.{js,ts,vue}"
   },
   "bin": {

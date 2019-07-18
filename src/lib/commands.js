@@ -1,6 +1,6 @@
 'use strict';
 
-const NWD = require('../');
+const NWD = require('./');
 
 const list = () => {
   NWD.GetVersionList((err, versions) => {
