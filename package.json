@@ -10,7 +10,8 @@
     "build": "babel -d . ./src/",
     "clean": "rm -r ./bin/ ./lib/ ./test/",
     "prestart": "npm run build",
-    "start": "node ./bin/nwd.js"
+    "start": "node ./bin/nwd.js",
+    "prettier": "prettier --write src/**/*.{js,ts,vue}"
   },
   "bin": {
     "nwd": "./bin/nwd.js"
@@ -32,6 +33,7 @@
     "fs-extra": "^0.30.0",
     "node-async-flow": "^1.2.1",
     "os-homedir": "^1.0.1",
+    "prettier": "^1.18.2",
     "progress": "^1.1.8",
     "request": "^2.72.0",
     "request-progress": "^2.0.1",
