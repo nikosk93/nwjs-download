@@ -112,7 +112,6 @@ const Download = (url, {
             outputDirectory = isAbsolute(outputDirectory) ? outputDirectory: resolve(process.cwd(), outputDirectory)
             mkdirsSync(outputDirectory)
             path = resolve(outputDirectory, basename(path))
-            console.log('ppp', path)
         }
 
         if(yield exists(path, cb.single)) {

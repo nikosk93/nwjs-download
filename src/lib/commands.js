@@ -85,6 +85,7 @@ const download = (command) => {
         flavor: command.flavor,
         mirror: command.mirror,
         output: command.output,
+        unzip: command.unzip,
         showProgressbar: true
     }, (err, fromCache, path) => {
 
@@ -94,7 +95,6 @@ const download = (command) => {
         }
 
         console.log(fromCache ? 'Cached:' : 'Downloaded:', path);
-
     });
 
 };

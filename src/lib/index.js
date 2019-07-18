@@ -2,8 +2,9 @@
 'use strict';
 
 const { dirname, basename, join } = require('path');
-const { exists, writeFile } = require('fs');
+const { exists, writeFile, createReadStream } = require('fs');
 const { deprecate } = require('util');
+const unzipper = require('unzipper');
 
 const Flow = require('node-async-flow');
 
@@ -175,6 +176,7 @@ const DownloadBinary = ({
     flavor = null,
     mirror = null,
     output = null,
+    unzip = false,
     showProgressbar = false,
     progressCallback = null
 }, callback) => {
@@ -216,8 +218,15 @@ const DownloadBinary = ({
             outputDirectory: output
         }, cb.expect(3));
 
-        callback(err, fromCache, path);
-
+        if (unzip) {
+            createReadStream(path)
+                .pipe(unzipper.Extract({ path: dirname(path) }))
+                .on('close', () => {
+                    callback(err, fromCache, path);
+                })
+        } else {
+            callback(err, fromCache, path);
+        }
     });
 
 };

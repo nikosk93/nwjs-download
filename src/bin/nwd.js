@@ -30,6 +30,7 @@ commander.command('download')
 .option('-f,--flavor <FLAVOR>')
 .option('-m,--mirror <URL_MIRROR>')
 .option('-o,--output <OUTPUT_DIRECTORY>')
+.option('-u,--unzip')
 .action(NWD.commands.download);
 
 if(process.argv.length <= 2) {
